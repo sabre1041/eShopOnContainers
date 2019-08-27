@@ -1,9 +1,8 @@
-ARG NODE_IMAGE=node:8.11
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM ${NODE_IMAGE} as node-build
+FROM node:8.11 as node-build
 WORKDIR /web
 COPY src/Web/WebSPA .
 RUN npm install
