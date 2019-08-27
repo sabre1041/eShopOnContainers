@@ -54,9 +54,9 @@ RUN dotnet publish --no-restore -c Release -o /app
 FROM build as functionaltest
 WORKDIR /src/src/Services/Marketing/Marketing.FunctionalTests
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Marketing.API.dll"]

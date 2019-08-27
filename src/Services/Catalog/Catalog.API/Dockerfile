@@ -57,9 +57,9 @@ WORKDIR /src/src/Services/Catalog/Catalog.UnitTests
 FROM build as functionaltest
 WORKDIR /src/src/Services/Catalog/Catalog.FunctionalTests
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Catalog.API.dll"]

@@ -51,9 +51,9 @@ COPY . .
 WORKDIR /src/src/Services/Ordering/Ordering.BackgroundTasks
 RUN dotnet publish --no-restore -c Release -o /app
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Ordering.BackgroundTasks.dll"]

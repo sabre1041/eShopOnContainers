@@ -51,10 +51,10 @@ COPY . .
 WORKDIR /src/src/ApiGateways/Mobile.Bff.Shopping/aggregator
 RUN dotnet publish --no-restore -c Release -o /app
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Mobile.Shopping.HttpAggregator.dll"]
 

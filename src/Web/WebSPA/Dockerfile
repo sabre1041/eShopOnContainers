@@ -59,9 +59,9 @@ COPY --from=node-build /web/wwwroot /src/src/Web/WebSPA/wwwroot/
 WORKDIR /src/src/Web/WebSPA
 RUN dotnet publish --no-restore -c Release -o /app
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "WebSPA.dll"]

@@ -57,9 +57,9 @@ WORKDIR /src/src/Services/Ordering/Ordering.UnitTests
 FROM build as functionaltest
 WORKDIR /src/src/Services/Ordering/Ordering.FunctionalTests
 
-FROM build AS publish
+#FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Ordering.API.dll"]
